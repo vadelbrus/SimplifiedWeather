@@ -1,0 +1,366 @@
+@charset "UTF-8";
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f2f2f2;
+  font-family: 'Roboto', sans-serif;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+ol, ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 320px;
+  color: 0;
+  background: #f2f2f2;
+  padding: 0px 5px 5px;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 40px;
+  padding: 0 8px;
+  margin: 10px auto 0;
+  background-color: #e2e7da;
+  color: #000;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+}
+
+.header__logo {
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.header__time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__date {
+  font-size: 12px;
+}
+
+.search {
+  position: relative;
+}
+
+.search__button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 40px;
+  width: 80px;
+  padding: 8px;
+  margin: 8px auto;
+  border-radius: 10px;
+  background-color: #A3BCB6;
+  border: 1px solid #A3BCB6;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.search__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.search__input {
+  height: 40px;
+  width: 100%;
+  padding: 8px;
+  margin: 8px auto;
+  border-radius: 10px;
+  background: #e2e7da;
+  border: none;
+  font-size: 16px;
+  font-weight: 300;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+}
+
+.search__dropdown-menu {
+  display: block;
+  position: absolute;
+  top: 23px;
+  left: 0;
+  width: 100%;
+  max-height: 250px;
+  margin-top: 25px;
+  border-top: none;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  z-index: 100;
+  background-color: #e2e7da;
+  overflow: auto;
+  border-top: 1px dotted black;
+}
+
+.search__city-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px dotted black;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.search__coords {
+  font-size: 12px;
+}
+
+.card {
+  background: #DADED4;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+}
+
+.card__inner-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 20px;
+  font-weight: 300;
+  padding: 8px;
+}
+
+.card__temperature-info {
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.card__temperature {
+  position: relative;
+  font-size: 60px;
+  margin: 15px 5px 5px;
+}
+
+.card__temperature:after {
+  content: "°";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(150%, -50%);
+          transform: translate(150%, -50%);
+  display: block;
+}
+
+.card__weather {
+  font-size: 22px;
+  margin: 0;
+}
+
+.card__weather-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.card__temp, .card__humidity, .card__wind-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-preferred-size: 33.333%;
+      flex-basis: 33.333%;
+}
+
+.card__humidity-img {
+  display: block;
+  width: 30%;
+}
+
+.card__wind-icon {
+  display: block;
+  width: 30%;
+}
+
+.line {
+  width: 95%;
+  color: #fff;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+}
+
+.upcomming-forecast {
+  font-size: 12px;
+  color: 0;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-x: scroll;
+}
+
+.upcomming-forecast__day {
+  width: 75%;
+  padding: 3px 0;
+  text-align: center;
+  background-color: #A3BCB6;
+  border-radius: 5px;
+}
+
+.upcomming-forecast__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 60px;
+  border-right: 1px dotted black;
+}
+
+.upcomming-forecast__row:nth-last-child(1) {
+  border-right: none;
+}
+
+.upcomming-forecast__values {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.upcomming-forecast__image {
+  width: 70%;
+  margin: 8px;
+}
+
+.footer {
+  background-color: #A3BCB6;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.footer__acknowledgements {
+  padding: 10px 5px;
+  margin: 0;
+}
+
+.footer__email {
+  padding: 10px 5px;
+  margin: 0;
+}
+
+.contact-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.contact-form__input-name, .contact-form__input-last-name {
+  margin-bottom: 5px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #DADED4;
+  padding: 8px;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+}
+
+.contact-form__submit-btn {
+  background-color: #C2D5A5;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+  border: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  font-size: 16px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.contact-form__message {
+  width: 100%;
+  margin-bottom: 5px;
+  resize: vertical;
+  height: 200px;
+  background-color: #DADED4;
+  -webkit-box-shadow: 3px 3px 5px #777;
+          box-shadow: 3px 3px 5px #777;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=style.css.map */
