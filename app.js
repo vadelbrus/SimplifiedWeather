@@ -173,13 +173,15 @@ const getCity = async (location) => {
 
         const input = document.querySelector('.search__input');
         input.value = "";
-
+        document.querySelector('.search__input').style.borderBottomLeftRadius = '10px';
+        document.querySelector('.search__input').style.borderBottomRightRadius = '10px';
+        document.querySelector('.search__input').style.boxShadow = 'none';
     });
+
 
     document.querySelector('.search__input').style.borderBottomLeftRadius = '0px';
     document.querySelector('.search__input').style.borderBottomRightRadius = '0px';
     document.querySelector('.search__input').style.boxShadow = 'none';
-
 }
 
 const searchButton = document.querySelector('.search__button');
