@@ -77,8 +77,11 @@ const fetchCitiesData = async () => {
         let data = response.json();
 
         return data
+
     } catch (err) {
-        console.log(err)
+
+        console.log('Error: ', err)
+
     }
 
 }
@@ -142,6 +145,8 @@ const getCity = async (location) => {
 
 
 
+    document.querySelector('.search__input').classList.add('search__input--border-disabled')
+
     ul.addEventListener('click', async (e) => {
         let coords;
 
@@ -150,38 +155,27 @@ const getCity = async (location) => {
         const processedCoords = coords.split(',');
         const lat = processedCoords[0];
         const lng = processedCoords[1];
-
-
-
-        console.log(lat, lng);
-
         const locationCoords = {
             lat: Number(lat),
             lng: Number(lng)
         };
 
-        console.log(locationCoords);
-
         const locationData = await fetchData(locationCoords);
-
-        console.log(locationData);
         const listDropdownMenu = document.querySelector('.search__dropdown-menu');
         listDropdownMenu.style.display = "none";
+
         displayWeatherData(locationData);
 
         //CLEAR INPUT VALUE
 
         const input = document.querySelector('.search__input');
         input.value = "";
-        document.querySelector('.search__input').style.borderBottomLeftRadius = '10px';
-        document.querySelector('.search__input').style.borderBottomRightRadius = '10px';
-        document.querySelector('.search__input').style.boxShadow = 'none';
+
+        //
+
+        document.querySelector('.search__input').classList.remove('search__input--border-disabled');
     });
 
-
-    document.querySelector('.search__input').style.borderBottomLeftRadius = '0px';
-    document.querySelector('.search__input').style.borderBottomRightRadius = '0px';
-    document.querySelector('.search__input').style.boxShadow = 'none';
 }
 
 const searchButton = document.querySelector('.search__button');
@@ -202,11 +196,12 @@ const fetchData = async (location) => {
         let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.lat}&lon=${location.lng}&units=metric&exclude=minutely,hourly,alerts&appid=${api_key}`)
         let data = await response.json();
 
-        // console.log(data);
-
         return data;
+
     } catch (err) {
-        console.log(err);
+
+        console.log('Error: ', err);
+
     }
 
 }
@@ -217,12 +212,9 @@ const getCoords = async () => {
         navigator.geolocation.getCurrentPosition(res, rej);
     });
 
-
-    console.log(pos);
-
     return {
         lat: Number(pos.coords.latitude.toFixed(4)),
-        lng: Number(pos.coords.longitude.toFixed(4))
+        lng: Number(pos.coords.longitude.toFixed(4)),
     }
 
 }

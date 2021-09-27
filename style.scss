@@ -68,10 +68,6 @@ body {
     }
 }
 
-
-
-
-
 .search   {  
     position: relative;
     
@@ -108,7 +104,14 @@ body {
     font-size: 16px;
     font-weight: 300;
     box-shadow: $shadow;
+
+    &--border-disabled {
     
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-shadow: none;
+    }
+   
 }
 
 &__dropdown-menu {
