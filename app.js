@@ -2,18 +2,18 @@ import config from './config.js';
 
 const api_key = config.API_KEY;
 
-// GETTING CURRENT TIME
+// GET CURRENT TIME
 const getCurrentTime = () => {
     let currentDate = new Date();
     let epoch = currentDate.getTime();
 
-    //Calendar date
+    // Create calendar date
 
     let year = currentDate.getFullYear();
     let month = currentDate.getMonth() + 1;
     let day = currentDate.getDate();
 
-    //Day time
+    // Create Day time
     let hour = currentDate.getUTCHours() + 2;
     let ampm = hour < 12 ? 'AM' : 'PM';
     let minutes = currentDate.getMinutes < 10 ? `0${currentDate.getMinutes()}` : currentDate.getMinutes();
@@ -33,7 +33,7 @@ const getCurrentTime = () => {
     }
 }
 
-// GETTING CURRENT DATE
+// GET CURRENT DATE
 
 const getCurrentDate = () => {
     const currentDate = new Date();
@@ -44,7 +44,7 @@ const getCurrentDate = () => {
 
 }
 
-// CONVERTING UNIX TIMESTAMP TO DAYWEEK
+// CONVERT UNIX TIMESTAMP TO DAYWEEK
 
 const convertToDayWeek = (milliseconds) => {
 
@@ -55,17 +55,22 @@ const convertToDayWeek = (milliseconds) => {
 
 }
 
+// DISPLAY CURRENT DATE
+
 const displayCurrentDate = () => {
 
     setInterval(() => {
+
+        // Get current time and date
         let { hour, minutes, ampm } = getCurrentTime();
         const time = document.querySelector('.time__current');
-        const currentTime = document.querySelector('.header__current-date');
+        const currentDate = document.querySelector('.header__current-date');
 
-        time.style.fontSize = "20px";
+        // Insert formated time and date into html
         time.innerText = `${hour <= 12 ? hour : hour - 12}:${minutes < 10 ? `0${minutes}` : minutes} ${ampm}`;
-        currentTime.style.fontSize = "11px";
-        currentTime.innerText = getCurrentDate();
+        currentDate.innerText = getCurrentDate();
+
+
     }, 1000);
 }
 
@@ -145,7 +150,7 @@ const getCity = async (location) => {
 
 
 
-    document.querySelector('.search__input').classList.add('search__input--border-disabled')
+    document.querySelector('.search__input').classList.add('search__input--border-disabled');
 
     ul.addEventListener('click', async (e) => {
         let coords;
@@ -276,6 +281,24 @@ const displayWeatherData = (data) => {
 
 };
 
+const askUserLocationData = async () => {
+
+    //ASK FOR GEOLOCATION PERMISSION 
+
+    const result = confirm('Do you want to share your location?');
+
+    if (!result) return;
+
+    //SET USER COORDS USING GEOLOCATION AND FETCH DATA
+
+    const coords = await getCoords();
+    const userLocationData = await fetchData(coords);
+
+    //RENDER WEATHER DATA
+
+    displayWeatherData(userLocationData);
+}
+
 window.addEventListener('DOMContentLoaded', async (e) => {
 
     //CLEAR INPUT VALUE
@@ -287,13 +310,10 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     displayCurrentDate();
 
-    //SET USER COORDS USING GEOLOCATION AND FETCH DATA
+    //SET USER COORDS AND DISPLAY WEATHER DATA
 
-    const coords = await getCoords();
-    const locationData = await fetchData(coords);
-
-    //RENDER WEATHER DATA
-
-    displayWeatherData(locationData);
+    askUserLocationData();
 });
+
+
 
