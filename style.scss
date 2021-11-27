@@ -13,7 +13,7 @@ body {
     justify-content: center;
     margin: 0;
     box-sizing: border-box;
-    background: $third-bg-color;
+    background: lightslategray;
     font-family: 'Roboto', sans-serif;
 
 }
@@ -33,8 +33,9 @@ body {
      
     width: 320px;
     color: $main-text-color;
-    background: $third-bg-color;
+    background: lightyellow;
     padding: 0px 5px 5px;
+    border-radius: 10px;
  
 }
 
@@ -42,13 +43,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     height: 40px;
     padding: 0 8px;
     margin: 10px auto 0;
     background-color: $secondary-bg-color;
     color: $secondary-text-color;
-    
     border-radius: $radius;
     box-shadow: $shadow;
        
@@ -58,14 +57,12 @@ body {
         font-weight: 400;
     }
 
-    &__time {
+    &__date {
         display: flex;
         align-items: center;
+        font-size: 11px;
     }
 
-    &__date {
-        font-size: 12px;
-    }
 }
 
 .search   {  
@@ -133,11 +130,22 @@ body {
 
 &__city-row {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     border-bottom: 1px dotted black;
-    padding: 4px;
     cursor: pointer;
     font-size: 14px;
+}
+
+&__city-row span {
+    padding: 4px;
+}
+
+&__coord, &__city {
+flex-basis: 50%;
+}
+
+&__coord {
+    text-align: right;
 }
 
 &__coords {
@@ -150,82 +158,94 @@ body {
 }
 
 .card {
-  
-    
+      
     background: $main-bg-color;
-        border-radius: $radius;
-  box-shadow: $shadow;
-   
-
- 
+    border-radius: $radius;
+    box-shadow: $shadow;
+    
     &__inner-wrapper {
         display: flex;
         justify-content: space-between;
         font-size: 20px;
         font-weight: 300;
         padding: 8px;
-        
-     
+            
     }
 
     &__temperature-info {
-        
+        min-height: 104px;
         margin: 0 auto 40px;
         text-align: center;
+        
+        
     }
 
     &__temperature {
+        min-height: 72px;
         position: relative;
         font-size: 60px;
         margin: 15px 5px 5px; 
-        
-
-        &:after {
-            content: "°";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(150%, -50%);
-            display: block;
-        }
-        
+      
         
     }
 
     &__weather {
         font-size: 22px;
-        margin: 0 ;
+        margin: 0;
     }
 
     &__weather-details {
+        text-align: center;
+        padding: 8px;
+
+        
+    }
+    &__details-list {
         display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-bottom: 30px;
-        font-size: 16px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 11px;
+        text-align: left;
+        height: 0px;
+        overflow: hidden;
+        transition: height 0.5s linear;
+        
         
     }
 
-    &__temp, &__humidity, &__wind-info {
-        display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-basis: 33.333%;
-
+    &__details-list--isOpen {
+        height: 70px;
     }
 
-    &__humidity-img {
-        display: block;
-        width: 30%;
-       
+&__details-min, &__details-humidity, &__details-pressure, &__details-max, &__details-dew, &__details-visibility, &__details-uv, &__details-precip, &__details-wind {
+    
+        width: 33%;
+        padding: 5px 0;
+    
+}
+
+&__space {
+    margin-left: 4px;
+    text-align: right;
+}
+    &__btn {
+        font-size: 14px;
+        border-radius: 10px;
+        width: 80px;
+        padding: 5px 20px;
+        background-color: #A3BCB6;
+        margin-bottom: 20px;
+        border: none;
+
+        
     }
 
-    &__wind-icon {
-        display: block;
-        width: 30%;
-    }
+}
 
-   
+.time {
+    &__current {
+        font-size: 20px;
+    }
 }
 
 .line {
