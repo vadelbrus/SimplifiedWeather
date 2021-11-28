@@ -426,7 +426,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     // Set user coords and display weather data
 
-    askUserLocationData();
+    askUserLocationData()
 });
 
 
