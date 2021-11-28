@@ -2,7 +2,9 @@ import config from './config.js';
 
 // DECLARING GLOBAL VARIABLES
 
-// const api_key = ${{ secrets.OPENWEATHER_API_KEY }};
+ const api_key = {
+     secret: ${{ secrets.OPENWEATHER_API_KEY }},
+};
 let intervalId;
 
 // GET CURRENT TIME
@@ -83,7 +85,7 @@ const displayCurrentDate = (offset) => {
 
 const fetchCitiesData = async (location) => {
     try {
-        let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${{ secrets.OPENWEATHER_API_KEY }}`);
+        let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${api_key.secret}`);
         let data = response.json();
         return data
 
@@ -230,7 +232,7 @@ const fetchData = async (location) => {
 
         // Use one-call api taking location as a query parameter
 
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,hourly,alerts&appid=${{ secrets.OPENWEATHER_API_KEY }}`)
+        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,hourly,alerts&appid=${api_key.secret}`)
         let data = await response.json();
 
         return data;
@@ -364,7 +366,7 @@ const displayWeatherData = (data) => {
 
 
 const geocodingApiResponse = async (lat, lon) => {
-    const geocodingUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${{ secrets.OPENWEATHER_API_KEY }}`;
+    const geocodingUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${api_key.secret}`;
     try {
         const response = await fetch(geocodingUrl);
         const data = response.json();
