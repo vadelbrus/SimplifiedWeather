@@ -2,7 +2,7 @@
 
 // DECLARING GLOBAL VARIABLES
 
- const api_key = "6e79f73e4cb9aa56e0af03cbeb9c00c9";
+const api_key = "6e79f73e4cb9aa56e0af03cbeb9c00c9";
 
 let intervalId;
 
