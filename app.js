@@ -2,7 +2,7 @@
 
 // DECLARING GLOBAL VARIABLES
 
- const api_key = `${{secrets.OPENWEATHER_API_KEY}}`;
+ const api_key = `${secrets.OPENWEATHER_API_KEY}`;
 
 let intervalId;
 
