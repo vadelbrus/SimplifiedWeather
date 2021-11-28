@@ -84,7 +84,7 @@ const displayCurrentDate = (offset) => {
 
 const fetchCitiesData = async (location) => {
     try {
-        let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${api_key}`);
+        let response = await fetch(`https://.api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${api_key}`);
         let data = response.json();
         return data
 
@@ -231,7 +231,7 @@ const fetchData = async (location) => {
 
         // Use one-call api taking location as a query parameter
 
-        let response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,hourly,alerts&appid=${api_key}`)
+        let response = await fetch(`https://.api.openweathermap.org/data/2.5/onecall?lat=${location.latitude}&lon=${location.longitude}&units=metric&exclude=minutely,hourly,alerts&appid=${api_key}`)
         let data = await response.json();
 
         return data;
@@ -365,7 +365,7 @@ const displayWeatherData = (data) => {
 
 
 const geocodingApiResponse = async (lat, lon) => {
-    const geocodingUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${api_key}`;
+    const geocodingUrl = `https://.api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${api_key}`;
     try {
         const response = await fetch(geocodingUrl);
         const data = response.json();
