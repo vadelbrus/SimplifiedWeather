@@ -3,7 +3,7 @@ import config from './config.js';
 // DECLARING GLOBAL VARIABLES
 
  const api_key = secrets.OPENWEATHER_API_KEY;
-};
+
 let intervalId;
 
 // GET CURRENT TIME
