@@ -271,7 +271,7 @@ const showNextDaysWeather = (el) => {
     return `<li class="upcomming-forecast__row">
    <span class="upcomming-forecast__day">${convertToDayWeek(el.dt)}</span>
      <div class="upcomming-forecast__values">
-     <img src="static/temporaryicons/weather/${el.weather[0].icon}.png" alt="" class="upcomming-forecast__image">
+     <img src="/weather/${el.weather[0].icon}.png" alt="" class="upcomming-forecast__image">
      <span class="upcomming-forecast__temperatures">${Math.round(el.temp.max)}°/${Math.round(el.temp.min)}°</span>
      </div>
      </li>`
