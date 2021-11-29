@@ -197,7 +197,7 @@ const getCity = async (location) => {
         
         // Render weather for next seven days
 
-        renderNextDaysWeather(data);
+        renderNextDaysWeather(locationData);
 
         // Remove citylist prompt
         citiesList.style.display = "none";
