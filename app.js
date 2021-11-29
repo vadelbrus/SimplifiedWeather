@@ -194,6 +194,10 @@ const getCity = async (location) => {
         // Display data for selected location
 
         displayWeatherData(locationData);
+        
+        // Render weather for next seven days
+
+        renderNextDaysWeather(data);
 
         // Remove citylist prompt
         citiesList.style.display = "none";
@@ -335,29 +339,7 @@ const displayWeatherData = (data) => {
     pressure.insertAdjacentText('beforeend', `${data.current.pressure}hPa`);
     weatherDescription.innerText = firstLetterToUpperCase(data.current.weather[0].description);
 
-    // Set input hide/open condition to false (hide)
-
-    let isOpen = false;
-
-    btn.addEventListener('click', () => {
-        const list = document.querySelector('.card__details-list');
-
-        // Close/Hide 'details' button
-
-        isOpen = !isOpen;
-
-        if (isOpen) {
-            btn.textContent = 'hide'
-            list.classList.toggle('card__details-list--isOpen');
-        }
-        else {
-            btn.textContent = 'details';
-            list.classList.toggle('card__details-list--isOpen');
-        }
-
-    });
-
-    // Render weather for next seven days
+   // Render weather for next seven days
 
     renderNextDaysWeather(data);
 
@@ -426,7 +408,29 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     // Set user coords and display weather data
 
-    askUserLocationData()
+    askUserLocationData();
+    
+    // Set input hide/open condition to false (hide)
+
+    let isOpen = false;
+
+    btn.addEventListener('click', () => {
+        const list = document.querySelector('.card__details-list');
+
+        // Close/Hide 'details' button
+
+        isOpen = !isOpen;
+
+        if (isOpen) {
+            btn.textContent = 'hide'
+            list.classList.toggle('card__details-list--isOpen');
+        }
+        else {
+            btn.textContent = 'details';
+            list.classList.toggle('card__details-list--isOpen');
+        }
+
+    });
 });
 
 
