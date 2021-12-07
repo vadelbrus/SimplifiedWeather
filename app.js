@@ -1,9 +1,8 @@
-// import config from './config.js';
+import config from './config.js';
 
 // DECLARING GLOBAL VARIABLES
 
-const api_key = "6e79f73e4cb9aa56e0af03cbeb9c00c9";
-
+const api_key = config.API_KEY;
 let intervalId;
 
 // GET CURRENT TIME
@@ -84,7 +83,7 @@ const displayCurrentDate = (offset) => {
 
 const fetchCitiesData = async (location) => {
     try {
-        let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${api_key}`);
+        let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${api_key}`);
         let data = response.json();
         return data
 
@@ -194,8 +193,8 @@ const getCity = async (location) => {
         // Display data for selected location
 
         displayWeatherData(locationData);
-        
-        // Render weather for next seven days
+
+        // Display weather for next seven days
 
         renderNextDaysWeather(locationData);
 
@@ -275,7 +274,7 @@ const showNextDaysWeather = (el) => {
     return `<li class="upcomming-forecast__row">
    <span class="upcomming-forecast__day">${convertToDayWeek(el.dt)}</span>
      <div class="upcomming-forecast__values">
-     <img src="temporaryicons/weather/${el.weather[0].icon}.png" alt="" class="upcomming-forecast__image">
+     <img src="/temporaryicons/weather/${el.weather[0].icon}.png" alt="" class="upcomming-forecast__image">
      <span class="upcomming-forecast__temperatures">${Math.round(el.temp.max)}°/${Math.round(el.temp.min)}°</span>
      </div>
      </li>`
@@ -308,7 +307,7 @@ const firstLetterToUpperCase = (str) => {
 // DISPLAY MAIN DATA FROM API TO THE USER
 
 const displayWeatherData = (data) => {
-    const btn = document.querySelector('.card__btn');
+
     const temperature = document.querySelector('.card__temperature');
     const weatherDescription = document.querySelector('.card__weather');
     const lowestTemperature = document.querySelector('.card__min-value ');
@@ -339,7 +338,9 @@ const displayWeatherData = (data) => {
     pressure.insertAdjacentText('beforeend', `${data.current.pressure}hPa`);
     weatherDescription.innerText = firstLetterToUpperCase(data.current.weather[0].description);
 
-   // Render weather for next seven days
+
+
+    // Render weather for next seven days
 
     renderNextDaysWeather(data);
 
@@ -347,7 +348,7 @@ const displayWeatherData = (data) => {
 
 
 const geocodingApiResponse = async (lat, lon) => {
-    const geocodingUrl = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${api_key}`;
+    const geocodingUrl = `http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${api_key}`;
     try {
         const response = await fetch(geocodingUrl);
         const data = response.json();
@@ -401,18 +402,19 @@ const askUserLocationData = async () => {
 
 window.addEventListener('DOMContentLoaded', async (e) => {
 
+    // Set user coords and display weather data
+    askUserLocationData();
+
     // Clear input value
 
     const input = document.querySelector('.search__input');
     input.value = "";
 
-    // Set user coords and display weather data
 
-    askUserLocationData();
-    
-    // Set input hide/open condition to false (hide)
+    // Set input hide/open condition to false (default: hide)
 
     let isOpen = false;
+    const btn = document.querySelector('.card__btn');
 
     btn.addEventListener('click', () => {
         const list = document.querySelector('.card__details-list');
@@ -431,6 +433,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         }
 
     });
+
+
+
 });
 
 
